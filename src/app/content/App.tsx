@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/Button'
 
 export default function App() {
-  return <Button>Button</Button>
+  return <Button className="fixed z-top">Button</Button>
 }
