@@ -1,6 +1,6 @@
+import path from 'node:path'
 import { defineConfig } from 'wxt'
 import react from '@vitejs/plugin-react'
-import path from 'node:path'
 import { name } from './package.json'
 
 const isDev = process.env.NODE_ENV === 'development'
