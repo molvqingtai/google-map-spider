@@ -11,7 +11,7 @@ export default defineConfig({
   entrypointsDir: path.resolve('src', 'app'),
   imports: false,
   runner: {
-    startUrls: ['https://www.example.com/']
+    startUrls: ['https://www.google.com/maps']
   },
   vite: () => ({
     define: {

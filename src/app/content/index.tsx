@@ -7,7 +7,7 @@ import '@/assets/styles/tailwind.css'
 import { createElement } from '@/utils/index.ts'
 
 export default defineContentScript({
-  matches: ['<all_urls>'],
+  matches: ['*://*.google.com/maps/*'],
   cssInjectionMode: 'ui',
 
   async main(ctx) {
@@ -15,6 +15,7 @@ export default defineContentScript({
       name: __NAME__,
       position: 'inline',
       anchor: 'body',
+      mode: __DEV__ ? 'open' : 'closed',
       onMount: (container) => {
         const app = createElement(`<div id="app"></div>`)
         container.append(app)
