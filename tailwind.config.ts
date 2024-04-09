@@ -1,4 +1,5 @@
 import { type Config } from 'tailwindcss'
+
 import animate from 'tailwindcss-animate'
 
 export default {
@@ -14,7 +15,8 @@ export default {
     },
     extend: {
       zIndex: {
-        top: '2147483647'
+        infinity: 'calc(infinity)'
+        // top: '2147483647'
       },
       colors: {
         border: 'hsl(var(--border))',

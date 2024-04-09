@@ -12,6 +12,7 @@ export default defineConfig({
   imports: false,
   runner: {
     startUrls: ['https://www.google.com/maps']
+    // startUrls: ['https://www.example.com']
   },
   vite: () => ({
     define: {
@@ -19,5 +20,17 @@ export default defineConfig({
       __NAME__: JSON.stringify(name)
     },
     plugins: [react()]
-  })
+  }),
+  manifest: {
+    permissions: ['storage'],
+    action: {
+      default_title: name
+    },
+    web_accessible_resources: [
+      {
+        resources: ['*.js'],
+        matches: ['<all_urls>']
+      }
+    ]
+  }
 })
