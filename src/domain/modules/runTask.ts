@@ -76,14 +76,15 @@ const triggerSearchApi = async (
 const runTask = async (_: any, taskTimer: Timer) => {
   try {
     websiteMessenger.removeAllListeners()
-    const isFirstCall = firstCall()
+    const searchInput = queryBySelector<HTMLInputElement>(document.body, '#searchboxinput')!
+    if (!searchInput.value) {
+      taskTimer.reset()
+      throw new TaskError('请先搜索店铺', 'warning')
+    }
+
+    const isFirstCall = firstCall(searchInput.value)
     if (isFirstCall) {
       const data = await triggerSearchApi(async () => {
-        const searchInput = queryBySelector<HTMLInputElement>(document.body, '#searchboxinput')!
-        if (!searchInput.value) {
-          taskTimer.reset()
-          throw new TaskError('请先搜索店铺', 'warning')
-        }
         const searchButton = queryBySelector<HTMLButtonElement>(document.body, '#searchbox-searchbutton')!
         await userEvent.click(searchButton)
         try {
