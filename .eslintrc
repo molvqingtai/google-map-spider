@@ -49,6 +49,7 @@
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-unsafe-argument": "off",
     "@typescript-eslint/promise-function-async": "off",
-    "no-async-promise-executor": "off"
+    "no-async-promise-executor": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off"
   }
 }

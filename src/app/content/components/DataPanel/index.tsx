@@ -32,6 +32,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { cn } from '@/utils'
 import TaskDomain, { type TaskData } from '@/domain/Task'
 import noDataSvg from '@/assets/images/no-data.svg'
+import { DEFAULT_LOGO } from '@/constants'
 
 export const columns: Array<ColumnDef<TaskData>> = [
   {
@@ -59,7 +60,7 @@ export const columns: Array<ColumnDef<TaskData>> = [
     size: 300,
     cell: ({ row }) => (
       <div className="h-12 w-16">
-        <img className="block size-full rounded" src={row.getValue('logo')} />
+        <img className="block size-full rounded" src={row.getValue('logo') || DEFAULT_LOGO} />
       </div>
     )
   },

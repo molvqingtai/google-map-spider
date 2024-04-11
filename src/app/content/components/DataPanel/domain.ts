@@ -10,7 +10,7 @@ export const DataPanelDomain = Remesh.domain({
     const State = domain.state<DataPanelState>({
       name: 'DataPanel.State',
       default: {
-        open: true
+        open: false
       }
     })
 

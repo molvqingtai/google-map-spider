@@ -10,6 +10,13 @@ export default defineUnlistedScript({
       interceptors: [new XMLHttpRequestInterceptor()]
     })
 
+    window.CSS.registerProperty({
+      name: '--shimmer-angle',
+      syntax: '<angle>',
+      inherits: false,
+      initialValue: '0deg'
+    })
+
     interceptor.apply()
 
     interceptor.on('response', async ({ response, request }) => {

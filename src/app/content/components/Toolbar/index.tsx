@@ -30,7 +30,7 @@ export const Toolbar = () => {
 
   const statusTextMap = {
     stopped: '未开始',
-    started: '已开始',
+    started: '进行中',
     paused: '已暂停'
   }
 
@@ -39,32 +39,42 @@ export const Toolbar = () => {
   }
 
   return (
-    <div className="fixed inset-x-1 top-3 z-infinity mx-auto flex w-fit gap-x-5 rounded-full bg-white px-6 py-3 shadow shadow-slate-400">
-      <Toggle variant="outline" pressed={taskStatus === 'started'} onPressedChange={handleRun}>
-        {taskStatus === 'started' ? (
-          <PauseIcon className="size-4"></PauseIcon>
-        ) : (
-          <PlayIcon className="size-4"></PlayIcon>
-        )}
-      </Toggle>
+    <div
+      className={cn(
+        'fixed inset-x-1 top-3 z-infinity mx-auto flex w-fit  p-1 shadow shadow-slate-400 rounded-full bg-slate-100',
+        (taskStatus === 'started' || taskStatus === 'paused') &&
+          'animate-[shimmer_2s_linear_infinite] bg-[conic-gradient(from_var(--shimmer-angle),theme(colors.slate.100)_0%,theme(colors.yellow.400)_10%,theme(colors.slate.100)_20%)]',
+        taskStatus === 'started' && 'running ',
+        taskStatus === 'paused' && 'paused'
+      )}
+    >
+      <div className="flex gap-x-4 rounded-full bg-white px-5 py-2">
+        <Toggle variant="outline" pressed={taskStatus === 'started'} onPressedChange={handleRun}>
+          {taskStatus === 'started' ? (
+            <PauseIcon className="size-4"></PauseIcon>
+          ) : (
+            <PlayIcon className="size-4"></PlayIcon>
+          )}
+        </Toggle>
 
-      <Badge
-        variant="secondary"
-        className={cn(
-          'min-w-32 justify-center text-slate-600',
-          taskStatus === 'started' && 'bg-green-50 text-green-500',
-          taskStatus === 'paused' && 'bg-yellow-50 text-yellow-500'
-        )}
-      >
-        {statusTextMap[taskStatus]}
-      </Badge>
-      <Toggle variant="outline" pressed={dataTableState.open} onPressedChange={handleDataPanelToggle}>
-        {dataTableState.open ? (
-          <ChevronsDownUpIcon className="size-4"></ChevronsDownUpIcon>
-        ) : (
-          <ChevronsUpDownIcon className="size-4"></ChevronsUpDownIcon>
-        )}
-      </Toggle>
+        <Badge
+          variant="secondary"
+          className={cn(
+            'min-w-32 justify-center text-slate-600',
+            taskStatus === 'started' && 'bg-yellow-50 text-yellow-500',
+            taskStatus === 'paused' && 'bg-yellow-50 text-yellow-500'
+          )}
+        >
+          {statusTextMap[taskStatus]}
+        </Badge>
+        <Toggle variant="outline" pressed={dataTableState.open} onPressedChange={handleDataPanelToggle}>
+          {dataTableState.open ? (
+            <ChevronsDownUpIcon className="size-4"></ChevronsDownUpIcon>
+          ) : (
+            <ChevronsUpDownIcon className="size-4"></ChevronsUpDownIcon>
+          )}
+        </Toggle>
+      </div>
     </div>
   )
 }
