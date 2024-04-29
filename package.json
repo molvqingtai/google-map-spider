@@ -22,7 +22,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.351.0",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
-    "@types/react": "^18.2.46",
+    "@types/react": "^18.3.1",
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@vitejs/plugin-react": "^4.2.1",
