@@ -3,10 +3,11 @@ import Timer from '@resreq/timer'
 
 import { fromEventPattern, map, merge } from 'rxjs'
 import { format } from 'date-fns'
-import { SetupPopupDomain } from '../app/content/components/SetupPopup/domain'
 import { ToastModule } from './modules/Toast'
 import runTask from './modules/runTask'
 import UserInfoDomain from './UserInfo'
+import { DataPanelDomain } from '@/app/content/components/DataPanel/domain'
+import { SetupPopupDomain } from '@/app/content/components/SetupPopup/domain'
 import jsonToExcel from '@/utils/jsonToExcel'
 
 export type TaskStatus = 'started' | 'stopped' | 'paused'
@@ -70,6 +71,7 @@ const TaskDomain = Remesh.domain({
     const Toast = ToastModule(domain)
     const userInfoDomain = domain.getDomain(UserInfoDomain())
     const setupPopupDomain = domain.getDomain(SetupPopupDomain())
+    const dataPanelDomain = domain.getDomain(DataPanelDomain())
 
     const TaskStatus = domain.state<TaskStatus>({
       name: 'Task.StatusState',
@@ -152,7 +154,7 @@ const TaskDomain = Remesh.domain({
         if (status === 'stopped') {
           return []
         }
-        return [ToastCommand(options), TaskStatus().new('stopped'), StopEvent()]
+        return [ToastCommand(options), TaskStatus().new('stopped'), dataPanelDomain.command.OpenCommand(), StopEvent()]
       }
     })
 

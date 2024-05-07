@@ -2,9 +2,8 @@ import { PlayIcon, PauseIcon, ChevronsUpDownIcon, ChevronsDownUpIcon } from 'luc
 
 import { useRemeshDomain, useRemeshQuery, useRemeshSend } from 'remesh-react'
 import { DataPanelDomain } from '../DataPanel/domain'
-import UserInfoDomain from '../../../../domain/UserInfo'
 import { Badge } from '@/components/ui/Badge'
-import { cn, throttle } from '@/utils'
+import { cn } from '@/utils'
 import { Toggle } from '@/components/ui/Toggle'
 import TaskDomain from '@/domain/Task'
 

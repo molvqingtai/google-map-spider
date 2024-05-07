@@ -1,6 +1,7 @@
 import { Remesh } from 'remesh'
-import { map, merge, tap } from 'rxjs'
+import { map, merge } from 'rxjs'
 import UserInfoDomain from '@/domain/UserInfo'
+import TaskDomain from '@/domain/Task'
 
 export interface ActiveTab {
   name: 'profile' | 'login' | 'register' | 'password'

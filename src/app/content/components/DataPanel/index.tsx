@@ -110,12 +110,12 @@ export const columns: Array<ColumnDef<TaskData>> = [
   {
     accessorKey: 'address',
     header: () => <div className="text-nowrap">地址</div>,
-    cell: ({ row }) => <div className="min-w-40 text-xs text-slate-500">{row.getValue('address')}</div>
+    cell: ({ row }) => <div className="min-w-40 max-w-60 text-xs text-slate-500">{row.getValue('address')}</div>
   },
   {
     accessorKey: 'fullAddress',
     header: () => <div className="text-nowrap">详细地址</div>,
-    cell: ({ row }) => <div className="min-w-44 text-xs text-slate-500">{row.getValue('fullAddress')}</div>
+    cell: ({ row }) => <div className="min-w-44 max-w-60 text-xs text-slate-500">{row.getValue('fullAddress')}</div>
   },
   // {
   //   accessorKey: 'openTime',
@@ -125,7 +125,13 @@ export const columns: Array<ColumnDef<TaskData>> = [
   {
     accessorKey: 'website',
     header: () => <div className="text-nowrap">网址</div>,
-    cell: ({ row }) => <div className="min-w-32 text-xs text-slate-500">{row.getValue('website')}</div>
+    cell: ({ row }) => (
+      <div className="min-w-32 max-w-96 break-all text-xs text-slate-500 hover:underline">
+        <a href={row.getValue('website')} target={row.getValue('website')}>
+          {row.getValue('website')}
+        </a>
+      </div>
+    )
   },
   {
     accessorKey: 'phone',
